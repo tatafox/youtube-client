@@ -11,6 +11,7 @@ import { SearchComponent } from './components/header/search/search.component';
 import { SettingsComponent } from './components/header/settings/settings.component';
 import { SearchResultComponent } from './components/search-result/search-result.component';
 import { SearchItemComponent } from './components/search-result/search-item/search-item.component';
+import { MaterialModule } from './material/material.module';
 
 function components() {
   return [
@@ -27,7 +28,7 @@ function components() {
 
 @NgModule({
   declarations: [AppComponent, ...components()],
-  imports: [BrowserModule, BrowserAnimationsModule],
+  imports: [BrowserModule, BrowserAnimationsModule, MaterialModule],
   providers: [],
   bootstrap: [AppComponent],
 })
