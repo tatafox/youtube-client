@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/header/login/login.component';
-import { LogoComponent } from './components/header/logo/logo.component';
 import { SearchComponent } from './components/header/search/search.component';
 import { SettingsComponent } from './components/header/settings/settings.component';
 import { SearchResultComponent } from './components/search-result/search-result.component';
@@ -19,7 +18,6 @@ function components() {
     SearchComponent,
     LoginComponent,
     SettingsComponent,
-    LogoComponent,
     SearchResultComponent,
     SearchItemComponent,
     FilterComponent,

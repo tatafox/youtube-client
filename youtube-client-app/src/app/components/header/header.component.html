@@ -1,3 +1,14 @@
 <header class="header">
-  <app-search></app-search>
+  <div class="header__setting-wrapper">
+    <div class="header__logo">
+      <mat-icon class="youtube-logo" color="primary">smart_display</mat-icon>
+    </div>
+    <app-search></app-search>
+    <button mat-raised-button class="header__setting" color="primary">
+      <mat-icon class="setting">tune</mat-icon>
+    </button>
+  </div>
+  <div class="header__login-wrapper header-login">
+    <app-login></app-login>
+  </div>
 </header>
