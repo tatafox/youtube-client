@@ -1,3 +1,5 @@
+@import '../../../../themes/variables.scss';
+
 :host {
   display: flex;
   justify-content: center;
@@ -7,7 +9,7 @@
 .header-login {
   &__name {
     font-size: 12px;
-    color: #4F4F4F;
+    color: $text-gray-color;
     margin-right: 10px;
   }
 

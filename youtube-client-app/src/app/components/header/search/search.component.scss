@@ -1,8 +1,14 @@
+@import '../../../../themes/variables.scss';
+
 .search-form {
   display: flex;
 
   ::ng-deep .mat-form-field-wrapper{
     margin-bottom: -1.34375em;
+  }
+
+  ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+    background: $background-light-color;
   }
 
   ::ng-deep .mat-form-field-infix {

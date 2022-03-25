@@ -1,8 +1,10 @@
+@import '../../../themes/variables.scss';
+
 .header {
   display: flex;
   height: 80px;
   align-items: center;
-  background: #E5E5E5;
+  background: $background-color;
 
   &__setting-wrapper {
     flex-basis: 65%;
