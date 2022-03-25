@@ -1,0 +1,38 @@
+@import '../../../themes/variables.scss';
+
+.filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $background-color;
+  padding: 10px;
+  font-size: 12px;
+  color: $text-light-gray-color;
+
+  span {
+    margin-right: 15px;
+  }
+
+  &__item {
+    color: $primary-color;
+    text-decoration: underline;
+
+    &:hover {
+      color: $primary-hover-color;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+
+  &__input {
+    width: 150px;
+    border: none;
+    color: $text-gray-color;
+
+    &:focus,
+    &:focus-visible {
+      border: 1px solid $primary-color;
+      outline: none;
+    }
+  }
+}
