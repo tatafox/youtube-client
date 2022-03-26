@@ -1,0 +1,43 @@
+mat-card {
+  width: 230px;
+
+  img {
+    padding: 20px;
+    width: 223px;
+  }
+
+  mat-card-title {
+    text-align: right;
+    padding-right: 5px;
+  }
+
+  mat-card-actions {
+    display: flex;
+    justify-content: center;
+    padding-top: 60px;
+  }
+
+  .statistics {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    padding-right: 5px;
+
+    &__item {
+      display: flex;
+      align-items: center;
+
+      mat-icon {
+        font-size: 20px;
+      }
+
+      span {
+        font-size: 10px;
+      }
+    }
+  }
+
+  mat-card-title {
+    margin-top: 20px;
+  }
+}
