@@ -2,9 +2,22 @@
 
 .header {
   display: flex;
-  height: 80px;
-  align-items: center;
-  background: $background-color;
+  flex-direction: column;
+
+  &__top {
+    display: flex;
+    height: 80px;
+    align-items: center;
+    background: $background-color;
+  }
+
+ /* &__bottom {
+    display: none;
+
+    &.active {
+      display: block;
+    }
+  }*/
 
   &__setting-wrapper {
     flex-basis: 65%;
