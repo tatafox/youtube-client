@@ -1,6 +1,4 @@
-import {
-  Directive, ElementRef, Input, OnInit,
-} from '@angular/core';
+import { Directive, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
 
 @Directive({
   selector: '[appColorByDate]',
@@ -8,11 +6,7 @@ import {
 export class ColorByDateDirective implements OnInit {
   @Input('appColorByDate') public date?: string;
 
-  private cardElements: ElementRef;
-
-  constructor(private element: ElementRef) {
-    this.cardElements = this.element;
-  }
+  constructor(private element: ElementRef, private rend: Renderer2) {}
 
   ngOnInit(): void {
     this.addColorClass();
@@ -25,11 +19,11 @@ export class ColorByDateDirective implements OnInit {
     const timeOffset: number = new Date().getTime() - publishedDate.getTime();
 
     if (timeOffset < sevenDays) {
-      this.cardElements.nativeElement.classList.add('card--blue');
+      this.rend.addClass(this.element.nativeElement, 'card--blue');
     } else if (timeOffset < month) {
-      this.cardElements.nativeElement.classList.add('card--green');
+      this.rend.addClass(this.element.nativeElement, 'card--green');
     } else if (timeOffset > 6 * month) {
-      this.cardElements.nativeElement.classList.add('card--red');
+      this.rend.addClass(this.element.nativeElement, 'card--red');
     }
   }
 }
