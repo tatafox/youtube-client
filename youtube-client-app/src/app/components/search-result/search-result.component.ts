@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ISearchItem } from '../../common/models/search-items.models';
 
 @Component({
