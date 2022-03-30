@@ -1,2 +1,5 @@
 <app-header></app-header>
-<app-search-result [items]="items"></app-search-result>
+<div #searchResult style="display: none">
+  <app-search-result [items]="items">
+  </app-search-result>
+</div>
