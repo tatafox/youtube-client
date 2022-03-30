@@ -1,4 +1,4 @@
-<mat-card class="card">
+<mat-card class="card" [appColorByDate] = "item.snippet.publishedAt">
   <img mat-card-image src="{{item.snippet.thumbnails.medium.url}}" alt="Photo of a Shiba Inu">
   <div class="card__statistics statistics">
     <div class="statistics__item">
@@ -23,6 +23,6 @@
     <button mat-raised-button color="primary">more...</button>
   </mat-card-actions>
   <mat-card-footer>
-    <mat-progress-bar color="warn" mode="determinate" value="100"></mat-progress-bar>
+    <mat-progress-bar color="accent" mode="determinate" value="100"></mat-progress-bar>
   </mat-card-footer>
 </mat-card>

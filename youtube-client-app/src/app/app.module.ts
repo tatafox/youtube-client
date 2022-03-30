@@ -11,6 +11,7 @@ import { SettingsComponent } from './components/header/settings/settings.compone
 import { SearchResultComponent } from './components/search-result/search-result.component';
 import { SearchItemComponent } from './components/search-result/search-item/search-item.component';
 import { MaterialModule } from './material/material.module';
+import { ColorByDateDirective } from './directives/color-by-date.directive';
 
 function components() {
   return [
@@ -25,7 +26,7 @@ function components() {
 }
 
 @NgModule({
-  declarations: [AppComponent, ...components()],
+  declarations: [AppComponent, ...components(), ColorByDateDirective],
   imports: [BrowserModule, BrowserAnimationsModule, MaterialModule],
   providers: [],
   bootstrap: [AppComponent],

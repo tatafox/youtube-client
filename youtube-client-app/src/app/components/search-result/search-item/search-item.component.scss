@@ -1,3 +1,5 @@
+@import '../../../../themes/variables.scss';
+
 mat-card {
   width: 230px;
 
@@ -47,7 +49,23 @@ mat-card {
     margin-top: 20px;
   }
 
-  ::ng-deep .mat-progress-bar .mat-progress-bar-fill::after {
-    background-color: #F2C94C;
+  &.card--blue {
+    ::ng-deep .mat-progress-bar .mat-progress-bar-fill::after {
+      background-color: $primary-color;
+    }
+  }
+
+
+  &.card--green {
+    ::ng-deep .mat-progress-bar .mat-progress-bar-fill::after {
+      background-color: $green-color;
+    }
+  }
+
+
+  &.card--red {
+    ::ng-deep .mat-progress-bar .mat-progress-bar-fill::after {
+      background-color: $warn-color;
+    }
   }
 }

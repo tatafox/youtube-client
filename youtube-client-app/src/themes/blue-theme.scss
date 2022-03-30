@@ -2,8 +2,8 @@
 @include mat-core();
 
 $blue-gray-primary: mat-palette($mat-blue, A400);
-$blue-gray-accent: mat-palette($mat-pink, A200, A100, A400);
-$blue-gray-warn: mat-palette($mat-red, 900);
+$blue-gray-accent: mat-palette($mat-amber, 400);
+$blue-gray-warn: mat-palette($mat-red, 500);
 
 $blue-gray-theme: mat-light-theme((
   color: (
