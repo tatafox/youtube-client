@@ -1,7 +1,7 @@
 <div class="filter">
   <span>Sorting by:</span>
-  <span class="filter__item">date</span>
-  <span class="filter__item">count of views</span>
+  <span class="filter__item" (click)="changeSort($event, sortMap.date)">date</span>
+  <span class="filter__item" (click)="changeSort($event, sortMap.view)">count of views</span>
   <span class="filter__item">by word sentence</span>
   <input class="filter__input">
 </div>

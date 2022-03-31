@@ -5,15 +5,12 @@
         <mat-icon class="youtube-logo" color="primary">smart_display</mat-icon>
       </div>
       <app-search></app-search>
-      <button mat-raised-button class="header__setting" color="primary" (click)="settingActive = !settingActive">
+      <button mat-raised-button class="header__setting" color="primary" (click)="toggleSetting.emit()">
         <mat-icon class="setting">tune</mat-icon>
       </button>
     </div>
     <div class="header__login-wrapper header-login">
       <app-login></app-login>
     </div>
-  </div>
-  <div *ngIf="settingActive" class="header__bottom">
-    <app-filter></app-filter>
   </div>
 </header>

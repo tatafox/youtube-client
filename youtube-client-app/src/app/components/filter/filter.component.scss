@@ -16,11 +16,31 @@
   &__item {
     color: $primary-color;
     text-decoration: underline;
+    position: relative;
 
     &:hover {
       color: $primary-hover-color;
       text-decoration: none;
       cursor: pointer;
+    }
+
+    &.active {
+      text-decoration: none;
+
+
+      &:after {
+        content: '↓';
+        position: absolute;
+        right: -7px;
+        bottom: 2px;
+      }
+
+      &--increase:after {
+        content: '↑';
+        position: absolute;
+        right: -7px;
+        bottom: 2px;
+      }
     }
   }
 

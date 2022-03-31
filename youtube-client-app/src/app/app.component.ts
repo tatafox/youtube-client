@@ -5,6 +5,7 @@ import { IResponse } from './common/models/search-response.models';
 import youtubeResponse from './common/mocks/response';
 import { ISearchItem } from './common/models/search-items.models';
 import { VideoSearchService } from './services/video-search.service';
+import { ISortSettings } from './common/models/sort-settings.model';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,13 @@ export class AppComponent implements OnInit {
 
   public items: ISearchItem[] = youtubeResponse.items;
 
+  public settingActive: boolean = false;
+
+  public sortSettings: ISortSettings = {
+    filterBy: 'NONE',
+    sortIncrease: true,
+  };
+
   constructor(private readonly videoSearchService: VideoSearchService) {}
 
   ngOnInit(): void {
@@ -27,11 +35,18 @@ export class AppComponent implements OnInit {
   }
 
   onSearch(searchVal: string) {
-    console.log(this.searchListRef);
     (this.searchListRef as ElementRef).nativeElement.style.display = 'block';
     (this.searchListRef as ElementRef).nativeElement.setAttribute(
       'data-search',
       searchVal,
     );
+  }
+
+  public toggleSetting(): void {
+    this.settingActive = !this.settingActive;
+  }
+
+  public newSortSettings(settings: ISortSettings): void {
+    this.sortSettings = { ...settings };
   }
 }

@@ -14,6 +14,7 @@ import { SearchResultComponent } from './components/search-result/search-result.
 import { SearchItemComponent } from './components/search-result/search-item/search-item.component';
 import { MaterialModule } from './material/material.module';
 import { ColorByDateDirective } from './directives/color-by-date.directive';
+import { SortPipe } from './pipes/sort.pipe';
 
 function components() {
   return [
@@ -28,7 +29,7 @@ function components() {
 }
 
 @NgModule({
-  declarations: [AppComponent, ...components(), ColorByDateDirective],
+  declarations: [AppComponent, ...components(), ColorByDateDirective, SortPipe],
   imports: [
     BrowserModule,
     FormsModule,
