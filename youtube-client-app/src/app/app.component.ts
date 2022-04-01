@@ -5,7 +5,7 @@ import { IResponse } from './common/models/search-response.models';
 import youtubeResponse from './common/mocks/response';
 import { ISearchItem } from './common/models/search-items.models';
 import { VideoSearchService } from './services/video-search.service';
-import { ISortSettings } from './common/models/sort-settings.model';
+import { ISortSettings, sortMap } from './common/models/sort-settings.model';
 
 @Component({
   selector: 'app-root',
@@ -23,9 +23,12 @@ export class AppComponent implements OnInit {
 
   public settingActive: boolean = false;
 
+  public keyword: string = '';
+
   public sortSettings: ISortSettings = {
-    filterBy: 'NONE',
+    filterBy: sortMap.empty,
     sortIncrease: true,
+    keywords: '',
   };
 
   constructor(private readonly videoSearchService: VideoSearchService) {}

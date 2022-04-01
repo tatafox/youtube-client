@@ -1,6 +1,7 @@
 export interface ISortSettings {
   filterBy: SortType;
   sortIncrease: boolean;
+  keywords: string;
 }
 export interface ISort {
   date: SortType;

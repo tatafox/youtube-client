@@ -21,11 +21,12 @@ export class FilterComponent {
   public sortSettings: ISortSettings = {
     filterBy: sortMap.empty,
     sortIncrease: true,
+    keywords: '',
   };
 
   constructor() {}
 
-  public changeSort(event: any, sortBy: SortType) {
+  public changeSort(event: any, sortBy: SortType): void {
     // added class for sort toggle
     if (this.pressedSort === (event as PointerEvent).target) {
       this.pressedSort?.classList.toggle('active--increase');
@@ -43,6 +44,11 @@ export class FilterComponent {
       this.sortSettings.sortIncrease = true;
       this.sortSettings.filterBy = sortBy;
     }
+    this.setSortSettings.emit(this.sortSettings);
+  }
+
+  public changeFilter(keyword: string): void {
+    this.sortSettings.keywords = keyword.trim();
     this.setSortSettings.emit(this.sortSettings);
   }
 }
