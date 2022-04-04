@@ -12,7 +12,7 @@ import {
   styleUrls: ['./filter.component.scss'],
 })
 export class FilterComponent {
-  @Output() public setSortSettings: EventEmitter<ISortSettings> = new EventEmitter();
+  @Output() public setSortSettings = new EventEmitter<ISortSettings>();
 
   public sortMap: ISort = sortMap;
 
@@ -26,14 +26,14 @@ export class FilterComponent {
 
   constructor() {}
 
-  public changeSort(event: any, sortBy: SortType): void {
+  public changeSort(event: MouseEvent, sortBy: SortType): void {
     // added class for sort toggle
-    if (this.pressedSort === (event as PointerEvent).target) {
+    if (this.pressedSort === event.target) {
       this.pressedSort?.classList.toggle('active--increase');
     } else {
       this.pressedSort?.classList.remove('active');
       this.pressedSort?.classList.remove('active--increase');
-      this.pressedSort = (event as PointerEvent).target as HTMLElement;
+      this.pressedSort = event.target as HTMLElement;
       this.pressedSort?.classList.add('active');
       this.pressedSort?.classList.add('active--increase');
     }

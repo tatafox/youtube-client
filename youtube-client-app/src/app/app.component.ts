@@ -25,6 +25,8 @@ export class AppComponent implements OnInit {
 
   public keyword: string = '';
 
+  public searchVal: string = '';
+
   public sortSettings: ISortSettings = {
     filterBy: sortMap.empty,
     sortIncrease: true,
@@ -34,15 +36,7 @@ export class AppComponent implements OnInit {
   constructor(private readonly videoSearchService: VideoSearchService) {}
 
   ngOnInit(): void {
-    this.videoSearchService.searchVal$.subscribe((searchVal) => this.onSearch(searchVal));
-  }
-
-  onSearch(searchVal: string) {
-    (this.searchListRef as ElementRef).nativeElement.style.display = 'block';
-    (this.searchListRef as ElementRef).nativeElement.setAttribute(
-      'data-search',
-      searchVal,
-    );
+    this.videoSearchService.searchVal$.subscribe((searchVal) => this.searchVal = searchVal);
   }
 
   public toggleSetting(): void {

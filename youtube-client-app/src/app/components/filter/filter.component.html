@@ -2,6 +2,6 @@
   <span>Sorting by:</span>
   <span class="filter__item" (click)="changeSort($event, sortMap.date)">date</span>
   <span class="filter__item" (click)="changeSort($event, sortMap.view)">count of views</span>
-  <span class="filter__item" (click)="changeFilter(this.keyword.value)">by word sentence</span>
-  <input class="filter__input" #keyword (keydown.enter)="changeFilter(this.keyword.value)">
+  <span class="filter__item" (click)="changeFilter(keyword.value)">by word sentence</span>
+  <input class="filter__input" #keyword (keydown.enter)="changeFilter(keyword.value)">
 </div>

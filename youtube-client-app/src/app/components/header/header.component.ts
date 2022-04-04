@@ -8,7 +8,7 @@ import {
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  @Output() public toggleSetting: EventEmitter<void> = new EventEmitter();
+  @Output() public toggleSetting = new EventEmitter<void>();
 
   constructor() {}
 
