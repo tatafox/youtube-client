@@ -1,16 +1,20 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/header/login/login.component';
-import { LogoComponent } from './components/header/logo/logo.component';
 import { SearchComponent } from './components/header/search/search.component';
 import { SettingsComponent } from './components/header/settings/settings.component';
 import { SearchResultComponent } from './components/search-result/search-result.component';
 import { SearchItemComponent } from './components/search-result/search-item/search-item.component';
+import { MaterialModule } from './material/material.module';
+import { ColorByDateDirective } from './directives/color-by-date.directive';
+import { SortPipe } from './pipes/sort.pipe';
 
 function components() {
   return [
@@ -18,7 +22,6 @@ function components() {
     SearchComponent,
     LoginComponent,
     SettingsComponent,
-    LogoComponent,
     SearchResultComponent,
     SearchItemComponent,
     FilterComponent,
@@ -26,8 +29,13 @@ function components() {
 }
 
 @NgModule({
-  declarations: [AppComponent, ...components()],
-  imports: [BrowserModule, BrowserAnimationsModule],
+  declarations: [AppComponent, ...components(), ColorByDateDirective, SortPipe],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

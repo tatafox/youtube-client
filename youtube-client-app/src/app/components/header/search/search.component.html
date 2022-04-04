@@ -1,1 +1,13 @@
-<p>search works!</p>
+<form class="search-form">
+  <mat-form-field class="search-form__field" appearance="fill">
+    <input
+      [(ngModel)]="searchVal"
+      [ngModelOptions]="{standalone: true}"
+      matInput
+      placeholder="What are you want to find out?"
+      class="search-form__input">
+  </mat-form-field>
+  <button mat-raised-button type="submit" color="primary" (click)="onClickSearch()">
+    search
+  </button>
+</form>

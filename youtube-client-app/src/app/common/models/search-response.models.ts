@@ -1,6 +1,6 @@
 import { ISearchItem } from './search-items.models';
 
-export interface IResponce {
+export interface IResponse {
   kind: string;
   etag: string;
   pageInfo: IPageInfo;

@@ -1,0 +1,32 @@
+@import '../../../../themes/variables.scss';
+
+.search-form {
+  display: flex;
+
+  ::ng-deep .mat-form-field-wrapper{
+    margin-bottom: -1.34375em;
+  }
+
+  ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+    background: $background-light-color;
+  }
+
+  ::ng-deep .mat-form-field-infix {
+    padding: 5px 0 0;
+    border: none;
+  }
+
+  .mat-form-field.mat-form-field {
+    font-size: 12px;
+    width: 396px;
+  }
+
+  button.mat-primary {
+    height: 28px;
+    font-size: 12px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    border-radius: 0 4px 4px 0;
+  }
+}
