@@ -1,4 +1,4 @@
-@import '../../../themes/variables.scss';
+@import '../../../../themes/variables';
 
 .filter {
   display: flex;
@@ -11,6 +11,7 @@
 
   span {
     margin-right: 15px;
+    user-select: none;
   }
 
   &__item {

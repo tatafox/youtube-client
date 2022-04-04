@@ -1,4 +1,4 @@
-import { ISearchItem } from './search-items.models';
+import { ISearchItem } from '../../shared/models/search-items.models';
 
 export interface IResponse {
   kind: string;

@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { ISearchItem } from '../common/models/search-items.models';
-import { ISortSettings, sortMap } from '../common/models/sort-settings.model';
+import { ISearchItem } from '../models/search-items.models';
+import { ISortSettings, sortMap } from '../models/sort-settings.model';
 
 @Pipe({
   name: 'sort',

@@ -4,7 +4,7 @@ import {
   ISortSettings,
   sortMap,
   SortType,
-} from '../../common/models/sort-settings.model';
+} from '../../../shared/models/sort-settings.model';
 
 @Component({
   selector: 'app-filter',

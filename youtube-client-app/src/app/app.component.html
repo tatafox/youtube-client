@@ -1,6 +1,3 @@
 <app-header (toggleSetting)="toggleSetting()"></app-header>
 <app-filter *ngIf="settingActive" (setSortSettings)="newSortSettings($event)"></app-filter>
-<div #searchResult  *ngIf="searchVal">
-  <app-search-result [items]="items | sort: sortSettings">
-  </app-search-result>
-</div>
+<app-search-result></app-search-result>
