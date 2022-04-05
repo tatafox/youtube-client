@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ISearchItem } from '../../../shared/models/search-items.models';
 import { VideoSearchService } from '../../../core/services/video-search.service';
 import { ISortSettings, sortMap } from '../../../shared/models/sort-settings.model';
+import { SortSettingsService } from "../../../core/services/sort-settings.service";
 
 @Component({
   selector: 'app-search-result',
@@ -17,11 +18,14 @@ export class SearchResultComponent implements OnInit {
     keywords: '',
   };
 
-  constructor(private readonly videoSearchService: VideoSearchService) {}
+  constructor(private readonly videoSearchService: VideoSearchService, private readonly sortSettingsService: SortSettingsService) {}
 
   ngOnInit(): void {
     this.videoSearchService.items$.subscribe((items) => {
       this.items = items;
     });
+    this.sortSettingsService.sortSettings$.subscribe((sortSettings) => {
+      this.sortSettings = sortSettings;
+    })
   }
 }

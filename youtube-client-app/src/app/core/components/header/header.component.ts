@@ -10,6 +10,8 @@ import {
 export class HeaderComponent implements OnInit {
   @Output() public toggleSetting = new EventEmitter<void>();
 
+  public settingActive: boolean = false;
+
   constructor() {}
 
   ngOnInit(): void {}

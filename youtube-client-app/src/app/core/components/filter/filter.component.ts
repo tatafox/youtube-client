@@ -5,6 +5,8 @@ import {
   sortMap,
   SortType,
 } from '../../../shared/models/sort-settings.model';
+import { VideoSearchService } from "../../services/video-search.service";
+import { SortSettingsService } from "../../services/sort-settings.service";
 
 @Component({
   selector: 'app-filter',
@@ -24,7 +26,7 @@ export class FilterComponent {
     keywords: '',
   };
 
-  constructor() {}
+  constructor(private readonly sortSettingsService: SortSettingsService) {}
 
   public changeSort(event: MouseEvent, sortBy: SortType): void {
     // added class for sort toggle
@@ -44,11 +46,13 @@ export class FilterComponent {
       this.sortSettings.sortIncrease = true;
       this.sortSettings.filterBy = sortBy;
     }
-    this.setSortSettings.emit(this.sortSettings);
+    this.sortSettingsService.onSort(this.sortSettings);
+    //this.setSortSettings.emit(this.sortSettings);
   }
 
   public changeFilter(keyword: string): void {
     this.sortSettings.keywords = keyword.trim();
-    this.setSortSettings.emit(this.sortSettings);
+    this.sortSettingsService.onSort(this.sortSettings);
+    //this.setSortSettings.emit(this.sortSettings);
   }
 }

@@ -5,7 +5,7 @@
         <mat-icon class="youtube-logo" color="primary">smart_display</mat-icon>
       </div>
       <app-search></app-search>
-      <button mat-raised-button class="header__setting" color="primary" (click)="toggleSetting.emit()">
+      <button mat-raised-button class="header__setting" color="primary" (click)="settingActive = !settingActive">
         <mat-icon class="setting">tune</mat-icon>
       </button>
     </div>
@@ -13,4 +13,5 @@
       <app-login></app-login>
     </div>
   </div>
+  <app-filter *ngIf="settingActive"></app-filter>
 </header>

@@ -1,7 +1,4 @@
-import {
-  Component, ElementRef, ViewChild,
-} from '@angular/core';
-import { ISortSettings, sortMap } from './shared/models/sort-settings.model';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -9,23 +6,5 @@ import { ISortSettings, sortMap } from './shared/models/sort-settings.model';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  @ViewChild('searchResult') searchListRef?: ElementRef;
-
-  public settingActive: boolean = false;
-
-  public sortSettings: ISortSettings = {
-    filterBy: sortMap.empty,
-    sortIncrease: true,
-    keywords: '',
-  };
-
   public title: string = 'youtube-client-app';
-
-  public toggleSetting(): void {
-    this.settingActive = !this.settingActive;
-  }
-
-  public newSortSettings(settings: ISortSettings): void {
-    this.sortSettings = { ...settings };
-  }
 }
