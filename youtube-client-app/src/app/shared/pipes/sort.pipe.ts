@@ -32,16 +32,20 @@ export class SortPipe implements PipeTransform {
   }
 
   private filterByKeyword(cards: ISearchItem[], keyword: string): ISearchItem[] {
-    return cards.filter((card) => {
-      const onCheck: string[] = [
-        card.snippet.title,
-        card.snippet.description,
-        card.snippet.channelTitle,
-        ...card.snippet.tags,
-      ];
+    if (cards) {
+      return cards.filter((card) => {
+        const onCheck: string[] = [
+          card.snippet.title,
+          card.snippet.description,
+          card.snippet.channelTitle,
+          ...card.snippet.tags
+        ];
 
-      return onCheck.some((item) => item.toLocaleLowerCase().includes(keyword.toLowerCase()));
-    });
+        return onCheck.some((item) => item.toLocaleLowerCase().includes(keyword.toLowerCase()));
+      });
+    } else {
+      return cards;
+    }
   }
 
   public transform(items: ISearchItem[], sortSettings: ISortSettings): ISearchItem[] {
