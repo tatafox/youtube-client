@@ -10,13 +10,15 @@ import { FilterComponent } from './components/filter/filter.component';
 
 import { MaterialModule } from '../material/material.module';
 import { SharedModule } from '../shared/shared.module';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [HeaderComponent,
     SearchComponent,
     LoginComponent,
     SettingsComponent,
-    FilterComponent],
+    FilterComponent,
+    NotFoundComponent],
   imports: [
     CommonModule,
     MaterialModule,
@@ -29,6 +31,7 @@ import { SharedModule } from '../shared/shared.module';
     LoginComponent,
     SettingsComponent,
     FilterComponent,
-  ],
+    NotFoundComponent,
+  ]
 })
 export class CoreModule { }
