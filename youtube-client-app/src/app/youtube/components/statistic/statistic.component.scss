@@ -1,0 +1,19 @@
+.statistics {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  padding-right: 5px;
+
+  &__item {
+    display: flex;
+    align-items: center;
+
+    mat-icon {
+      font-size: 20px;
+    }
+
+    span {
+      font-size: 10px;
+    }
+  }
+}

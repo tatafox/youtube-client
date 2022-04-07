@@ -1,0 +1,32 @@
+:host {
+  display: flex;
+  justify-content: flex-start;
+  padding: 50px;
+}
+
+.button-back {
+  height: 32px;
+}
+
+.card {
+  display: flex;
+  gap: 35px;
+}
+
+.card__image-wrapper {
+  flex-basis: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card__image {
+  max-width: 100%;
+}
+
+.card__content {
+  flex-basis: 48%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
