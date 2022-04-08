@@ -23,7 +23,6 @@ export class VideoSearchService {
   }
 
   public findById(id: string): ISearchItem | null {
-    console.log(id, this.cardCollection, this.cardCollection.find((card) => card.id === id))
     return this.cardCollection.find((card) => card.id === id) || null;
   }
 }

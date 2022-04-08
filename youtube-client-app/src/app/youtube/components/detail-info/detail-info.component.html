@@ -1,7 +1,7 @@
 <button class="button-back" mat-flat-button color="primary" (click)="goBack()">
   <mat-icon>chevron_left</mat-icon>
 </button>
-<mat-card class="card">
+<mat-card class="card" [appColorByDate] = "item.snippet.publishedAt">
   <div class="card__image-wrapper">
     <img
       class="card__image"
@@ -20,7 +20,7 @@
     </div>
     <app-statistic [statistic]="item.statistics"></app-statistic>
     <mat-card-footer>
-      <mat-progress-bar color="primary" mode="determinate" value="100"></mat-progress-bar>
+      <mat-progress-bar color="accent" mode="determinate" value="100"></mat-progress-bar>
     </mat-card-footer>
   </mat-card-content>
 </mat-card>
