@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from "@angular/router";
-import { ISearchItem } from "../../../shared/models/search-items.models";
+import { ISearchItem, IStatistics } from "../../../shared/models/search-items.models";
 import { VideoSearchService } from "../../../core/services/video-search.service";
 
 @Component({

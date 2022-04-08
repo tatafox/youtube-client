@@ -18,7 +18,7 @@
       <div><strong>Description:</strong></div>
       <div>{{item.snippet.description}}</div>
     </div>
-    <app-statistic></app-statistic>
+    <app-statistic [statistic]="item.statistics"></app-statistic>
     <mat-card-footer>
       <mat-progress-bar color="primary" mode="determinate" value="100"></mat-progress-bar>
     </mat-card-footer>
