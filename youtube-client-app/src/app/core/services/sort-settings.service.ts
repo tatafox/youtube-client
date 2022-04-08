@@ -7,7 +7,6 @@ import { ISortSettings } from '../../shared/models/sort-settings.model';
 })
 
 export class SortSettingsService {
-
   public sortSettings$ = new Subject<ISortSettings>();
 
   public onSort(sortSettings: ISortSettings) {

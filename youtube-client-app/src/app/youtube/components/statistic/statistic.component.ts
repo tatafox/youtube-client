@@ -1,10 +1,10 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { IStatistics } from "../../../shared/models/search-items.models";
+import { Component, Input, OnInit } from '@angular/core';
+import { IStatistics } from '../../../shared/models/search-items.models';
 
 @Component({
   selector: 'app-statistic',
   templateUrl: './statistic.component.html',
-  styleUrls: ['./statistic.component.scss']
+  styleUrls: ['./statistic.component.scss'],
 })
 export class StatisticComponent implements OnInit {
   @Input() public statistic!: IStatistics;
@@ -13,5 +13,4 @@ export class StatisticComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

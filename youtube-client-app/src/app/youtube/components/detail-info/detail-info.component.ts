@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { ActivatedRoute, Router } from "@angular/router";
-import { ISearchItem, IStatistics } from "../../../shared/models/search-items.models";
-import { VideoSearchService } from "../../../core/services/video-search.service";
+import { ActivatedRoute, Router } from '@angular/router';
+import { ISearchItem } from '../../../shared/models/search-items.models';
+import { VideoSearchService } from '../../../core/services/video-search.service';
 
 @Component({
   selector: 'app-detail-info',
   templateUrl: './detail-info.component.html',
-  styleUrls: ['./detail-info.component.scss']
+  styleUrls: ['./detail-info.component.scss'],
 })
 export class DetailInfoComponent implements OnInit {
-
   public item!: ISearchItem;
 
   public id!: string;
@@ -35,5 +34,4 @@ export class DetailInfoComponent implements OnInit {
   public goBack(): void {
     this.location.back();
   }
-
 }

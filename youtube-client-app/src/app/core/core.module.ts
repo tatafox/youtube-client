@@ -32,6 +32,6 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     SettingsComponent,
     FilterComponent,
     NotFoundComponent,
-  ]
+  ],
 })
 export class CoreModule { }

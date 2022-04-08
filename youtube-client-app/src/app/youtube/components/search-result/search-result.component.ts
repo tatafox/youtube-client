@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ISearchItem } from '../../../shared/models/search-items.models';
 import { VideoSearchService } from '../../../core/services/video-search.service';
 import { ISortSettings, sortMap } from '../../../shared/models/sort-settings.model';
-import { SortSettingsService } from "../../../core/services/sort-settings.service";
+import { SortSettingsService } from '../../../core/services/sort-settings.service';
 
 @Component({
   selector: 'app-search-result',
@@ -18,7 +18,10 @@ export class SearchResultComponent implements OnInit {
     keywords: '',
   };
 
-  constructor(private readonly videoSearchService: VideoSearchService, private readonly sortSettingsService: SortSettingsService) {}
+  constructor(
+    private readonly videoSearchService: VideoSearchService,
+    private readonly sortSettingsService: SortSettingsService,
+  ) {}
 
   ngOnInit(): void {
     if (this.videoSearchService.cardCollection) {
@@ -29,6 +32,6 @@ export class SearchResultComponent implements OnInit {
     });
     this.sortSettingsService.sortSettings$.subscribe((sortSettings) => {
       this.sortSettings = sortSettings;
-    })
+    });
   }
 }

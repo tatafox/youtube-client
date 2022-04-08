@@ -7,10 +7,9 @@ import { ISortSettings, sortMap } from '../models/sort-settings.model';
   pure: false,
 })
 export class SortPipe implements PipeTransform {
-
-
   constructor() {
   }
+
   private sortByViews(cards: ISearchItem[], isIncrease: boolean): ISearchItem[] {
     if (!isIncrease) {
       return cards.sort(
@@ -42,14 +41,13 @@ export class SortPipe implements PipeTransform {
           card.snippet.title,
           card.snippet.description,
           card.snippet.channelTitle,
-          ...card.snippet.tags
+          ...card.snippet.tags,
         ];
 
         return onCheck.some((item) => item.toLocaleLowerCase().includes(keyword.toLowerCase()));
       });
-    } else {
-      return cards;
     }
+    return cards;
   }
 
   public transform(items: ISearchItem[], sortSettings: ISortSettings): ISearchItem[] {

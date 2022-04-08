@@ -11,6 +11,7 @@ export class VideoSearchService {
   public searchVal$ = new Subject<string>();
 
   public youtubeResponse: IResponse = youtubeResponse;
+
   public cardCollection!: ISearchItem[];
 
   public items$ = new Subject<ISearchItem[]>();

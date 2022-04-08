@@ -5,7 +5,7 @@ import {
   sortMap,
   SortType,
 } from '../../../shared/models/sort-settings.model';
-import { SortSettingsService } from "../../services/sort-settings.service";
+import { SortSettingsService } from '../../services/sort-settings.service';
 
 @Component({
   selector: 'app-filter',

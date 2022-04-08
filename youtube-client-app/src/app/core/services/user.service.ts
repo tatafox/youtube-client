@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { Router } from '@angular/router';
 import { IUser } from '../../shared/models/user.models';
-import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: 'root',
@@ -11,12 +11,11 @@ export class UserService {
 
   private user!: IUser | null;
 
-  constructor(private router: Router,) {
+  constructor(private router: Router) {
     this.tryLogin();
   }
 
   private tryLogin(): boolean {
-
     const user: IUser | null = this.getUsersFromLocalStorage();
 
     if (!user) {
