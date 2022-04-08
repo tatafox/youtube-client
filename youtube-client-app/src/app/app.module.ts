@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { YoutubeModule } from './youtube/youtube.module';
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +20,7 @@ import { AuthModule } from './auth/auth.module';
     YoutubeModule,
     CoreModule,
     AuthModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

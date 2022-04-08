@@ -20,7 +20,7 @@
   </div>
   <mat-card-title>{{item.snippet.title}}</mat-card-title>
   <mat-card-actions>
-    <button mat-raised-button color="primary">more...</button>
+    <button mat-raised-button color="primary" (click)="goToDetail()">more...</button>
   </mat-card-actions>
   <mat-card-footer>
     <mat-progress-bar color="accent" mode="determinate" value="100"></mat-progress-bar>

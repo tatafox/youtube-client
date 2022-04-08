@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ISearchItem } from '../../../../shared/models/search-items.models';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-search-item',
@@ -9,5 +10,9 @@ import { ISearchItem } from '../../../../shared/models/search-items.models';
 export class SearchItemComponent {
   @Input() public item!: ISearchItem;
 
-  constructor() {}
+  constructor(private router: Router) { }
+
+  public goToDetail(): void {
+    this.router.navigate(['detail', this.item.id]);
+  }
 }

@@ -7,6 +7,10 @@ import { ISortSettings, sortMap } from '../models/sort-settings.model';
   pure: false,
 })
 export class SortPipe implements PipeTransform {
+
+
+  constructor() {
+  }
   private sortByViews(cards: ISearchItem[], isIncrease: boolean): ISearchItem[] {
     if (!isIncrease) {
       return cards.sort(

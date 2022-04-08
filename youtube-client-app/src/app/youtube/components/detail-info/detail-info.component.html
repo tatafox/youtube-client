@@ -1,22 +1,22 @@
-<button class="button-back" mat-flat-button color="primary">
+<button class="button-back" mat-flat-button color="primary" (click)="goBack()">
   <mat-icon>chevron_left</mat-icon>
 </button>
 <mat-card class="card">
   <div class="card__image-wrapper">
     <img
       class="card__image"
-      [src]=""
-      [alt]=""
+      [src]="item.snippet.thumbnails.maxres.url"
+      [alt]="item.snippet.title"
     />
   </div>
   <mat-card-content class="card__content">
     <mat-card-header>
-      <mat-card-title>Kuji Podcast #20</mat-card-title>
-      <mat-card-subtitle>Thursday, May 20, 2019</mat-card-subtitle>
+      <mat-card-title>{{item.snippet.title}}</mat-card-title>
+      <mat-card-subtitle>{{item.snippet.publishedAt | date: 'medium'}}</mat-card-subtitle>
     </mat-card-header>
     <div class="card__description">
       <div><strong>Description:</strong></div>
-      <div>Это KuJi Podcast. В этом выпуске Тимур Каргинов, Андрей Коняев и Нурланом Сабуровым обсуждают окончание 2018 года: бой Хабиба с МакГрегором, Кокорина и Мамаева, шоу Урганта на Первом канале, экономический кризис и подарки для близких.</div>
+      <div>{{item.snippet.description}}</div>
     </div>
     <app-statistic></app-statistic>
     <mat-card-footer>

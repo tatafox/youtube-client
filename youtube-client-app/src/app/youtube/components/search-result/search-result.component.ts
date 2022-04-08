@@ -21,6 +21,9 @@ export class SearchResultComponent implements OnInit {
   constructor(private readonly videoSearchService: VideoSearchService, private readonly sortSettingsService: SortSettingsService) {}
 
   ngOnInit(): void {
+    if (this.videoSearchService.cardCollection) {
+      this.items = this.videoSearchService.cardCollection;
+    }
     this.videoSearchService.items$.subscribe((items) => {
       this.items = items;
     });
