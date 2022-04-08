@@ -8,6 +8,7 @@
       matInput
       [formControl]="loginFormControl"
       maxlength="15"
+      #loginName
     />
     <mat-error
       *ngIf="loginFormControl.hasError('required')">Username is required</mat-error>
@@ -20,13 +21,14 @@
       matInput
       [formControl]="loginFormControl"
       maxlength="15"
+      #loginPassword
     />
     <mat-error
       *ngIf="loginFormControl.hasError('required')">Please enter the password</mat-error>
   </mat-form-field>
   <div class="button-wrapper">
-    <button mat-button color="primary">Registration</button>
-    <button mat-raised-button type="submit" color="primary" >
+    <button mat-button color="primary" disabled>Registration</button>
+    <button mat-raised-button type="submit" color="primary" (click)="clickLogin(loginName.value, loginPassword.value)">
       Login
     </button>
   </div>

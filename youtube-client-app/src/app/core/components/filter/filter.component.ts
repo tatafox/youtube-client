@@ -5,7 +5,6 @@ import {
   sortMap,
   SortType,
 } from '../../../shared/models/sort-settings.model';
-import { VideoSearchService } from "../../services/video-search.service";
 import { SortSettingsService } from "../../services/sort-settings.service";
 
 @Component({
@@ -47,12 +46,10 @@ export class FilterComponent {
       this.sortSettings.filterBy = sortBy;
     }
     this.sortSettingsService.onSort(this.sortSettings);
-    //this.setSortSettings.emit(this.sortSettings);
   }
 
   public changeFilter(keyword: string): void {
     this.sortSettings.keywords = keyword.trim();
     this.sortSettingsService.onSort(this.sortSettings);
-    //this.setSortSettings.emit(this.sortSettings);
   }
 }
