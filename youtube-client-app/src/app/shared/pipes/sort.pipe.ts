@@ -35,7 +35,7 @@ export class SortPipe implements PipeTransform {
   }
 
   private filterByKeyword(cards: ISearchItem[], keyword: string): ISearchItem[] {
-    if (cards) {
+    if (cards && keyword.trim()) {
       return cards.filter((card) => {
         const onCheck: string[] = [
           card.snippet.title,

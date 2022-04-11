@@ -8,6 +8,7 @@ import { DetailInfoComponent } from './components/detail-info/detail-info.compon
 import { MaterialModule } from '../material/material.module';
 import { SharedModule } from '../shared/shared.module';
 import { StatisticComponent } from './components/statistic/statistic.component';
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [SearchResultComponent,
@@ -18,6 +19,7 @@ import { StatisticComponent } from './components/statistic/statistic.component';
     CommonModule,
     MaterialModule,
     SharedModule,
+    HttpClientModule,
   ],
   exports: [
     SearchResultComponent,

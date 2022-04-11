@@ -5,7 +5,7 @@
   <div class="card__image-wrapper">
     <img
       class="card__image"
-      [src]="item.snippet.thumbnails.maxres.url"
+      [src]="item.snippet.thumbnails.maxres?.url || item.snippet.thumbnails.high.url"
       [alt]="item.snippet.title"
     />
   </div>
