@@ -17,16 +17,19 @@ export class VideoSearchService {
 
   public items$ = new Subject<ISearchItem[]>();
 
+  public isLoading$ = new Subject<boolean>();
+
   constructor(private readonly youtubeApiServices: YoutubeApiService) {
   }
 
   public onSearch(searchVal: string) {
+    this.isLoading$.next(true);
     if (searchVal.trim() && searchVal.length > 3) {
       this.youtubeApiServices.fetchVideosByQuery(searchVal)
       this.youtubeApiServices.searchItems$.subscribe((items) => {
         this.cardCollection = items;
         this.items$.next(items);
-
+        this.isLoading$.next(false);
       })
     }
   }

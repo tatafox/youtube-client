@@ -3,6 +3,7 @@ import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ISearchItem } from '../../../shared/models/search-items.models';
 import { VideoSearchService } from '../../../core/services/video-search.service';
+import { YoutubeApiService } from '../../services/youtube-api.service';
 
 @Component({
   selector: 'app-detail-info',
@@ -14,21 +15,27 @@ export class DetailInfoComponent implements OnInit {
 
   public id!: string;
 
+  public isLoading: boolean = true;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private readonly videoSearchService: VideoSearchService,
+    private readonly youtubeApiServices: YoutubeApiService,
     private location: Location,
   ) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-    const item: ISearchItem | null = this.videoSearchService.findById(this.id);
-    if (!item) {
-      this.router.navigate(['404']);
-    } else {
-      this.item = item;
-    }
+
+    this.youtubeApiServices.getVideoInfoById(this.id).subscribe((response) => {
+      this.item = response;
+      if (!this.item) {
+        this.router.navigate(['404']);
+      }
+      this.isLoading = false;
+      return response;
+    });
   }
 
   public goBack(): void {

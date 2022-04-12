@@ -1,3 +1,4 @@
+<ng-container *ngIf="!isLoading; else loading">
 <div class="container">
   <div class="search-list">
     <app-search-item
@@ -5,3 +6,5 @@
     ></app-search-item>
   </div>
 </div>
+</ng-container>
+<ng-template #loading><app-loading></app-loading></ng-template>

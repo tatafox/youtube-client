@@ -3,7 +3,6 @@ import { ISearchItem } from '../../../shared/models/search-items.models';
 import { VideoSearchService } from '../../../core/services/video-search.service';
 import { ISortSettings, sortMap } from '../../../shared/models/sort-settings.model';
 import { SortSettingsService } from '../../../core/services/sort-settings.service';
-import { YoutubeApiService } from "../../services/youtube-api.service";
 
 @Component({
   selector: 'app-search-result',
@@ -12,6 +11,8 @@ import { YoutubeApiService } from "../../services/youtube-api.service";
 })
 export class SearchResultComponent implements OnInit {
   public items!: ISearchItem[];
+
+  public isLoading!: boolean;
 
   public sortSettings: ISortSettings = {
     filterBy: sortMap.empty,
@@ -22,7 +23,6 @@ export class SearchResultComponent implements OnInit {
   constructor(
     private readonly videoSearchService: VideoSearchService,
     private readonly sortSettingsService: SortSettingsService,
-    private readonly youtubeApiService: YoutubeApiService,
   ) {}
 
   ngOnInit(): void {
@@ -31,12 +31,13 @@ export class SearchResultComponent implements OnInit {
     }
     this.videoSearchService.items$.subscribe((items) => {
       this.items = items;
-      console.log(items);
-      //console.log(this.youtubeApiService.fetchVideosByQuery('Angular'))
-
     });
     this.sortSettingsService.sortSettings$.subscribe((sortSettings) => {
       this.sortSettings = sortSettings;
+    });
+    this.videoSearchService.isLoading$.subscribe((isLoad) => {
+      console.log(isLoad)
+      this.isLoading = isLoad;
     });
   }
 }
