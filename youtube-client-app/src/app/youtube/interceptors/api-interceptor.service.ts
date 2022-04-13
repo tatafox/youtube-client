@@ -10,7 +10,8 @@ export class ApiInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const cloned = req.clone({
-      url: `${this.youtubeApiURL}/${req.url}?key=${this.apiKey}`,
+      url: `${this.youtubeApiURL}/${req.url}`,
+      setParams: { 'key': this.apiKey },
     })
     return next.handle(cloned)};
 }

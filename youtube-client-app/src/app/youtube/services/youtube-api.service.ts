@@ -7,7 +7,6 @@ import { ISearchItem, ISearchResultItem } from '../../shared/models/search-items
   providedIn: 'root',
 })
 export class YoutubeApiService {
-  private apiKey: string = 'AIzaSyC5TzcKsE0YZYoggt1pkPqFa7eDPZrg3YY';
 
   private pathForSearch: string = 'search?';
 
@@ -20,7 +19,6 @@ export class YoutubeApiService {
   private getSearchListByQuery(query: string): Observable<ISearchResultItem[]> {
     return this.http.get(this.pathForSearch, {
       params: {
-        key: this.apiKey,
         type: 'video',
         part: 'snippet',
         maxResults: '20',
@@ -34,7 +32,6 @@ export class YoutubeApiService {
     return this.http
       .get(this.pathForVideos, {
         params: {
-          key: this.apiKey,
           id,
           part: 'snippet,statistics',
         },
