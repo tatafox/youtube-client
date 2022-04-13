@@ -9,18 +9,16 @@ import { ISearchItem, ISearchResultItem } from '../../shared/models/search-items
 export class YoutubeApiService {
   private apiKey: string = 'AIzaSyC5TzcKsE0YZYoggt1pkPqFa7eDPZrg3YY';
 
-  private rootUrl: string = 'https://www.googleapis.com';
+  private pathForSearch: string = 'search?';
 
-  private pathForSearch: string = '/youtube/v3/search?';
-
-  private pathForVideos: string = '/youtube/v3/videos?';
+  private pathForVideos: string = 'videos?';
 
   public searchItems$ = new Subject<ISearchItem[]>();
 
   constructor(private http: HttpClient) { }
 
   private getSearchListByQuery(query: string): Observable<ISearchResultItem[]> {
-    return this.http.get(this.rootUrl + this.pathForSearch, {
+    return this.http.get(this.pathForSearch, {
       params: {
         key: this.apiKey,
         type: 'video',
@@ -34,7 +32,7 @@ export class YoutubeApiService {
 
   getVideoInfoById(id: string): Observable<ISearchItem> {
     return this.http
-      .get(this.rootUrl + this.pathForVideos, {
+      .get(this.pathForVideos, {
         params: {
           key: this.apiKey,
           id,
