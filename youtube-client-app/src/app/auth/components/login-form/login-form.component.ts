@@ -12,8 +12,6 @@ import { IUser } from '../../../shared/models/user.models';
   styleUrls: ['./login-form.component.scss'],
 })
 export class LoginFormComponent {
-  loginFormControl = new FormControl('', [Validators.required]);
-
   public loginForm = this.formBuilder.group({
     username: [
       null,

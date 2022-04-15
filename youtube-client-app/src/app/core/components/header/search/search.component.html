@@ -4,6 +4,7 @@
       matInput
       #searchVideoInput
       placeholder="What are you want to find out?"
+      [disabled]="router.url.search('/home') === -1"
       class="search-form__input">
   </mat-form-field>
 </form>

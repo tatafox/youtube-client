@@ -36,4 +36,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   public clickLogIn(): void {
     this.router.navigate(['login']);
   }
+
+  public clickAdminPage(): void {
+    this.router.navigate(['admin-page']);
+  }
 }

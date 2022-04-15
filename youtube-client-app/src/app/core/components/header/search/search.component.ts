@@ -2,6 +2,7 @@ import {
   AfterViewInit, Component, ElementRef, ViewChild,
 } from '@angular/core';
 import { debounceTime, Observable, tap } from 'rxjs';
+import { Router } from '@angular/router';
 import { VideoSearchService } from '../../../services/video-search.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class SearchComponent implements AfterViewInit {
 
   private isTyping = false;
 
-  constructor(private readonly videoSearchService: VideoSearchService) {
+  constructor(private readonly videoSearchService: VideoSearchService, public router: Router) {
   }
 
   public ngAfterViewInit(): void {
