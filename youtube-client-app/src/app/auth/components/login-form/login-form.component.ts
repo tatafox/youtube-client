@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import {
+  FormBuilder, FormControl, ValidationErrors, Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../../core/services/user.service';
 import { IUser } from '../../../shared/models/user.models';
@@ -12,10 +14,30 @@ import { IUser } from '../../../shared/models/user.models';
 export class LoginFormComponent {
   loginFormControl = new FormControl('', [Validators.required]);
 
-  constructor(private userService: UserService, private router: Router) {
-  }
+  public loginForm = this.formBuilder.group({
+    username: [
+      null,
+      [
+        Validators.required,
+        Validators.email,
+      ],
+    ],
+    password: [
+      null,
+      [
+        Validators.required,
+        LoginFormComponent.passwordValidator,
+      ],
+    ],
+  });
 
-  public clickLogin(name: string, password: string): void {
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private formBuilder: FormBuilder,
+  ) {}
+
+  public submitLoginForm(name: string, password: string): void {
     const user: IUser = {
       name,
       password,
@@ -25,5 +47,11 @@ export class LoginFormComponent {
       alert('You are already logged in');
       this.router.navigate(['home']);
     }
+  }
+
+  static passwordValidator(control: FormControl): ValidationErrors | null {
+    const isSpace = (control.value || '').trim().includes(' ');
+    const isValid = (control.value || '').match(new RegExp('^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8}$'));
+    return !isSpace && isValid ? null : { password: true };
   }
 }
