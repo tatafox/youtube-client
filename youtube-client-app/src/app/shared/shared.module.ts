@@ -13,7 +13,7 @@ import { LoadingComponent } from './components/loading/loading.component';
   exports: [
     ColorByDateDirective,
     SortPipe,
-    LoadingComponent
+    LoadingComponent,
   ],
 })
 export class SharedModule { }

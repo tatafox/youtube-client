@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { UserService } from '../../../services/user.service';
@@ -8,7 +8,7 @@ import { UserService } from '../../../services/user.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   public userName: string | null = null;
 
   public subscriptions: Subscription = new Subscription();
@@ -19,7 +19,8 @@ export class LoginComponent implements OnInit {
   public ngOnInit(): void {
     this.userService.getUserStream()
       .subscribe((user) => {
-        user?.name ? (this.userName = user?.name) : (this.userName = null);
+        const newUser = user?.name ? (this.userName = user?.name) : (this.userName = null);
+        return newUser;
       });
   }
 

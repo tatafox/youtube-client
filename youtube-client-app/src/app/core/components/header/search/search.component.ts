@@ -1,4 +1,6 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import {
+  AfterViewInit, Component, ElementRef, ViewChild,
+} from '@angular/core';
 import { debounceTime, Observable, tap } from 'rxjs';
 import { VideoSearchService } from '../../../services/video-search.service';
 
@@ -7,7 +9,7 @@ import { VideoSearchService } from '../../../services/video-search.service';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
 })
-export class SearchComponent {
+export class SearchComponent implements AfterViewInit {
   @ViewChild('searchVideoInput') public searchVideoInput!: ElementRef<HTMLInputElement>;
 
   private searchVal = '';
@@ -26,9 +28,13 @@ export class SearchComponent {
 
     inputStream$
       .pipe(
-        tap(() => this.isTyping = true),
+        tap(() => {
+          this.isTyping = true;
+        }),
         debounceTime(700),
-        tap(() => this.isTyping = false),
+        tap(() => {
+          this.isTyping = false;
+        }),
       )
       .subscribe((value) => {
         if (!this.isTyping) {

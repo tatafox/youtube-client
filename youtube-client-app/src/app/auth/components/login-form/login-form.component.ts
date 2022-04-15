@@ -44,6 +44,7 @@ export class LoginFormComponent {
     };
     const isLogin: boolean = this.userService.loginUser(user);
     if (!isLogin) {
+      // eslint-disable-next-line no-alert
       alert('You are already logged in');
       this.router.navigate(['home']);
     }
@@ -51,7 +52,7 @@ export class LoginFormComponent {
 
   static passwordValidator(control: FormControl): ValidationErrors | null {
     const isSpace = (control.value || '').trim().includes(' ');
-    const isValid = (control.value || '').match(new RegExp('^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8}$'));
+    const isValid = (control.value || '').match(/^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8}$/);
     return !isSpace && isValid ? null : { password: true };
   }
 }

@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { forkJoin, map, Observable, Subject } from "rxjs";
+import {
+  forkJoin, map, Observable, Subject,
+} from 'rxjs';
 import { ISearchItem, ISearchResultItem } from '../../shared/models/search-items.models';
 
 @Injectable({
   providedIn: 'root',
 })
 export class YoutubeApiService {
-
   private pathForSearch: string = 'search?';
 
   private pathForVideos: string = 'videos?';
