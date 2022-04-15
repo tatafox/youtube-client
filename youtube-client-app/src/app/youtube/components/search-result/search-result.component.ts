@@ -36,7 +36,6 @@ export class SearchResultComponent implements OnInit {
       this.sortSettings = sortSettings;
     });
     this.videoSearchService.isLoading$.subscribe((isLoad) => {
-      console.log(isLoad)
       this.isLoading = isLoad;
     });
   }

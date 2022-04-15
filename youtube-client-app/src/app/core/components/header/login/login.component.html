@@ -1,5 +1,11 @@
-<button mat-button color="primary" (click)="clickLogOut()">Log out</button>
-<div class="header-login__name">your name</div>
+<ng-container *ngIf="userName; else login">
+  <button mat-button color="primary" (click)="clickLogOut()">Log out</button>
+</ng-container>
+<div class="header-login__name">{{ userName }}</div>
 <div class="header-login__icon" color="accent">
   <mat-icon color="primary" defaultColor="light-theme">account_box</mat-icon>
 </div>
+
+<ng-template #login>
+  <button mat-button color="primary" (click)="clickLogIn()">Log in</button>
+</ng-template>
