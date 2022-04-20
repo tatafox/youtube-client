@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { ISearchItem } from '../../../shared/models/search-items.models';
-import { VideoSearchService } from '../../../core/services/video-search.service';
 import { YoutubeApiService } from '../../services/youtube-api.service';
+import { AppState } from '../../../redux';
 
 @Component({
   selector: 'app-detail-info',
@@ -20,14 +21,25 @@ export class DetailInfoComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private readonly videoSearchService: VideoSearchService,
     private readonly youtubeApiServices: YoutubeApiService,
     private location: Location,
+    private store: Store<AppState>,
   ) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
 
+    this.store.select((state) => state)
+      .subscribe((state) => {
+        const item = state.videoState.items.find((card) => card.id === this.id);
+        if (!item) {
+          this.router.navigate(['404']);
+        }
+        this.item = item as ISearchItem;
+        this.isLoading = false;
+      });
+
+    /*
     this.youtubeApiServices.getVideoInfoById(this.id).subscribe((response) => {
       this.item = response;
       if (!this.item) {
@@ -35,7 +47,7 @@ export class DetailInfoComponent implements OnInit {
       }
       this.isLoading = false;
       return response;
-    });
+    }); */
   }
 
   public goBack(): void {

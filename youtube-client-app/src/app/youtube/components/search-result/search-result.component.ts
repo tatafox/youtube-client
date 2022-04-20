@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { ISearchItem } from "../../../shared/models/search-items.models";
-import { VideoSearchService } from '../../../core/services/video-search.service';
 import { ISortSettings, sortMap } from '../../../shared/models/sort-settings.model';
 import { SortSettingsService } from '../../../core/services/sort-settings.service';
 import { AppState } from "../../../redux";
+import { YoutubeApiService } from "../../services/youtube-api.service";
 
 @Component({
   selector: 'app-search-result',
@@ -19,7 +19,7 @@ export class SearchResultComponent implements OnInit {
 
   public items$!: Observable<ISearchItem[]>;
 
-  public isLoading!: boolean;
+  public isLoading: boolean = false;
 
   public sortSettings: ISortSettings = {
     filterBy: sortMap.empty,
@@ -28,7 +28,7 @@ export class SearchResultComponent implements OnInit {
   };
 
   constructor(
-    private readonly videoSearchService: VideoSearchService,
+    private readonly youtubeApiService: YoutubeApiService,
     private readonly sortSettingsService: SortSettingsService,
     private store: Store<AppState>,
   ) {}
@@ -42,7 +42,7 @@ export class SearchResultComponent implements OnInit {
     this.sortSettingsService.sortSettings$.subscribe((sortSettings) => {
       this.sortSettings = sortSettings;
     });
-    this.videoSearchService.isLoading$.subscribe((isLoad) => {
+    this.youtubeApiService.isLoading$.subscribe((isLoad) => {
       this.isLoading = isLoad;
     });
   }

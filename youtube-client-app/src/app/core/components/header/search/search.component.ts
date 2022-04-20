@@ -3,7 +3,6 @@ import {
 } from '@angular/core';
 import { debounceTime, Observable, tap } from 'rxjs';
 import { Router } from '@angular/router';
-import { VideoSearchService } from '../../../services/video-search.service';
 import { Store } from "@ngrx/store";
 import { VideoState, OnSearch, setSearchResult } from "../../../../redux";
 import { YoutubeApiService } from "../../../../youtube/services/youtube-api.service";
@@ -21,7 +20,6 @@ export class SearchComponent implements AfterViewInit {
   private isTyping = false;
 
   constructor(
-    private readonly videoSearchService: VideoSearchService,
     private readonly youtubeApiServices: YoutubeApiService,
     public router: Router,
     private readonly store: Store<VideoState>,
@@ -55,9 +53,11 @@ export class SearchComponent implements AfterViewInit {
 
   onSearch() {
     if (this.searchVal.trim() && this.searchVal.length > 3) {
+      this.youtubeApiServices.isLoading$.next(true);
       this.youtubeApiServices.fetchVideosByQuery(this.searchVal);
       this.youtubeApiServices.searchItems$.subscribe((items) => {
         this.store.dispatch(setSearchResult({ items }));
+        this.youtubeApiServices.isLoading$.next(false);
       });
     }
   }

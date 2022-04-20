@@ -12,7 +12,7 @@ import { YoutubeModule } from './youtube/youtube.module';
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
 import { AppRoutingModule } from './app-routing.module';
-import { VideoEffects, videoReducer } from "./redux";
+import { videoReducer } from "./redux";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { EffectsModule } from "@ngrx/effects";
 
@@ -28,7 +28,7 @@ import { EffectsModule } from "@ngrx/effects";
     AppRoutingModule,
 // @ts-ignore
     StoreModule.forRoot({ videoState: videoReducer }),
-    EffectsModule.forRoot([VideoEffects]),
+    EffectsModule.forRoot(),
     StoreDevtoolsModule.instrument({ maxAge: 25 }),
   ],
   providers: [],
