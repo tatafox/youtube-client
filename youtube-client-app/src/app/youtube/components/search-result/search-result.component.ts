@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { ISearchItem } from '../../../shared/models/search-items.models';
 import { ISortSettings, sortMap } from '../../../shared/models/sort-settings.model';
 import { SortSettingsService } from '../../../core/services/sort-settings.service';
@@ -13,7 +13,7 @@ import { ICustomItem } from '../../../shared/models/custom-item.models';
   templateUrl: './search-result.component.html',
   styleUrls: ['./search-result.component.scss'],
 })
-export class SearchResultComponent implements OnInit {
+export class SearchResultComponent implements OnInit, OnDestroy {
   public items!: ISearchItem[];
 
   public itemsCustom!: ICustomItem[];
@@ -21,6 +21,8 @@ export class SearchResultComponent implements OnInit {
   public state$!: Observable<AppState>;
 
   public isLoading: boolean = false;
+
+  private subscription!: Subscription;
 
   public sortSettings: ISortSettings = {
     filterBy: sortMap.empty,
@@ -34,9 +36,9 @@ export class SearchResultComponent implements OnInit {
     private store: Store<AppState>,
   ) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.state$ = this.store.select((state) => state);
-    this.state$.subscribe((state) => {
+    this.subscription = this.state$.subscribe((state) => {
       this.items = state.videoState.items;
       this.itemsCustom = state.videoState.customItems;
     });
@@ -47,5 +49,9 @@ export class SearchResultComponent implements OnInit {
     this.youtubeApiService.isLoading$.subscribe((isLoad) => {
       this.isLoading = isLoad;
     });
+  }
+
+  public ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

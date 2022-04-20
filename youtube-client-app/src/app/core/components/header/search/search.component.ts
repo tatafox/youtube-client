@@ -1,7 +1,9 @@
 import {
-  AfterViewInit, Component, ElementRef, ViewChild,
+  AfterViewInit, Component, ElementRef, OnDestroy, ViewChild,
 } from '@angular/core';
-import { debounceTime, Observable, tap } from 'rxjs';
+import {
+  debounceTime, Observable, Subscription, tap,
+} from 'rxjs';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { VideoState, setSearchResult } from '../../../../redux';
@@ -12,12 +14,14 @@ import { YoutubeApiService } from '../../../../youtube/services/youtube-api.serv
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
 })
-export class SearchComponent implements AfterViewInit {
+export class SearchComponent implements AfterViewInit, OnDestroy {
   @ViewChild('searchVideoInput') public searchVideoInput!: ElementRef<HTMLInputElement>;
 
   private searchVal = '';
 
   private isTyping = false;
+
+  private subscription!: Subscription;
 
   constructor(
     private readonly youtubeApiServices: YoutubeApiService,
@@ -33,7 +37,7 @@ export class SearchComponent implements AfterViewInit {
       input.oninput = () => observer.next(input.value);
     });
 
-    inputStream$
+    this.subscription = inputStream$
       .pipe(
         tap(() => {
           this.isTyping = true;
@@ -60,5 +64,9 @@ export class SearchComponent implements AfterViewInit {
         this.youtubeApiServices.isLoading$.next(false);
       });
     }
+  }
+
+  public ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

@@ -15,9 +15,9 @@ const reducer = createReducer(
   initialState,
   on(VideoActions.addCard, (state, { newCard }) => ({
     ...state,
-    customItems: [...state.customItems, newCard]
+    customItems: [...state.customItems, newCard],
   })),
-  on(VideoActions.setSearchResult, (state, { items }) => ({...state, items })),
+  on(VideoActions.setSearchResult, (state, { items }) => ({ ...state, items })),
 );
 
 export function videoReducer(state: VideoState, action: Action): VideoState {

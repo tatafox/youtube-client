@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
 import { ISearchItem, IStatistics } from '../../../shared/models/search-items.models';
 import { YoutubeApiService } from '../../services/youtube-api.service';
 import { AppState } from '../../../redux';
@@ -12,7 +13,7 @@ import { ICustomItem } from '../../../shared/models/custom-item.models';
   templateUrl: './detail-info.component.html',
   styleUrls: ['./detail-info.component.scss'],
 })
-export class DetailInfoComponent implements OnInit {
+export class DetailInfoComponent implements OnInit, OnDestroy {
   public item!: ISearchItem | ICustomItem;
 
   public id!: string;
@@ -22,6 +23,8 @@ export class DetailInfoComponent implements OnInit {
   public thumbnail!: string;
 
   public statistics!: IStatistics;
+
+  private subscription!: Subscription;
 
   constructor(
     private route: ActivatedRoute,
@@ -34,7 +37,7 @@ export class DetailInfoComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
 
-    this.store.select((state) => state)
+    this.subscription = this.store.select((state) => state)
       .subscribe((state) => {
         const item = state.videoState.items.find((card) => card.id === this.id)
           || state.videoState.customItems.find((card) => card.id === this.id);
@@ -57,5 +60,9 @@ export class DetailInfoComponent implements OnInit {
 
   public goBack(): void {
     this.location.back();
+  }
+
+  public ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

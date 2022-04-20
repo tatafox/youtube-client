@@ -7,11 +7,6 @@ export const addCard = createAction(
   props<{ newCard: ICustomItem }>(),
 );
 
-export const deleteCard = createAction(
-  '[ADMIN PAGE] DELETE CARD',
-  props<{ id: string }>(),
-);
-
 export const setSearchResult = createAction(
   '[YOUTUBE PAGE] SET SEARCH RESULT',
   props<{ items: ISearchItem[] }>(),
