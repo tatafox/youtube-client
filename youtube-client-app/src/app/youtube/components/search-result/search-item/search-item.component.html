@@ -1,0 +1,11 @@
+<mat-card class="card" [appColorByDate] = "item.snippet.publishedAt">
+  <img mat-card-image src="{{item.snippet.thumbnails.medium.url}}" alt="Photo of a Shiba Inu">
+  <app-statistic [statistic]="item.statistics"></app-statistic>
+  <mat-card-title>{{item.snippet.title}}</mat-card-title>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="goToDetail()">more...</button>
+  </mat-card-actions>
+  <mat-card-footer>
+    <mat-progress-bar color="accent" mode="determinate" value="100"></mat-progress-bar>
+  </mat-card-footer>
+</mat-card>

@@ -1,0 +1,49 @@
+@import '../../../../themes/variables';
+
+.header {
+  display: flex;
+  flex-direction: column;
+
+  &__top {
+    display: flex;
+    height: 80px;
+    align-items: center;
+    background: $background-color;
+  }
+
+  &__setting-wrapper {
+    flex-basis: 65%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  &__login-wrapper {
+    flex-basis: 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__logo {
+    margin-right: 10px;
+    margin-top: 6px;
+  }
+
+  &__setting {
+    height: 28px;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.youtube-logo {
+  font-size: 50px;
+  width: fit-content;
+  height: fit-content;
+}
+
+.setting {
+  font-size: 18px;
+}

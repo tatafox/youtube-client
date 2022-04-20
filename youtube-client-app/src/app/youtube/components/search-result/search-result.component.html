@@ -1,0 +1,7 @@
+<div class="container">
+  <div class="search-list">
+    <app-search-item
+      *ngFor="let item of items | sort: sortSettings" [item]="item"
+    ></app-search-item>
+  </div>
+</div>

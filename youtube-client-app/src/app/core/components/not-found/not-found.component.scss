@@ -1,0 +1,28 @@
+@import '../../../../themes/variables';
+
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  height: calc(100vh - 280px);
+}
+
+p {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+  color: $text-gray-color;
+
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+mat-icon {
+  color: #ffffff;
+  background: $primary-color;
+  font-size: 30px;
+  padding: 20px 30px;
+  border-radius: 10px;
+}

@@ -1,0 +1,36 @@
+<mat-card class="login-card">
+  <mat-card-title>Login</mat-card-title>
+  <mat-form-field appearance="fill">
+    <mat-label>Username</mat-label>
+    <input
+      type="text"
+      autocomplete="off"
+      matInput
+      [formControl]="loginFormControl"
+      maxlength="15"
+      #loginName
+    />
+    <mat-error
+      *ngIf="loginFormControl.hasError('required')">Username is required</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Password</mat-label>
+    <input
+      type="password"
+      autocomplete="off"
+      matInput
+      [formControl]="loginFormControl"
+      maxlength="15"
+      #loginPassword
+    />
+    <mat-error
+      *ngIf="loginFormControl.hasError('required')">Please enter the password</mat-error>
+  </mat-form-field>
+  <div class="button-wrapper">
+    <button mat-button color="primary" disabled>Registration</button>
+    <button mat-raised-button type="submit" color="primary" (click)="clickLogin(loginName.value, loginPassword.value)">
+      Login
+    </button>
+  </div>
+</mat-card>
+
