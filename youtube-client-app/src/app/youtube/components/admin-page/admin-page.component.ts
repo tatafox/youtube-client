@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import {
   AbstractControl, FormBuilder, ValidatorFn, Validators,
 } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { addCard, VideoState } from '../../../redux';
+import { CustomItem, ICustomItem } from '../../../shared/models/custom-item.models';
 
 @Component({
   selector: 'app-admin-page',
@@ -38,19 +41,18 @@ export class AdminPageComponent {
         AdminPageComponent.urlValidator,
       ],
     ],
-    date: [
-      null,
-      [
-        Validators.required,
-        AdminPageComponent.dateValidator,
-      ],
-    ],
   });
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private readonly store: Store<VideoState>) { }
 
   public submitAdminPageForm() {
-    console.log(this.adminPageForm);
+    const newCard: ICustomItem = new CustomItem(
+      this.adminPageForm.value.title,
+      this.adminPageForm.value.description,
+      this.adminPageForm.value.img,
+      this.adminPageForm.value.linkVideo,
+    );
+    this.store.dispatch(addCard({ newCard }));
   }
 
   static urlValidator: ValidatorFn = (control: AbstractControl) => {
@@ -64,17 +66,5 @@ export class AdminPageComponent {
     }
 
     return validUrl ? null : { invalidUrl: true };
-  };
-
-  static dateValidator: ValidatorFn = (control: AbstractControl) => {
-    let validDate = true;
-
-    try {
-      control.value.getTime();
-    } catch {
-      validDate = false;
-    }
-
-    return validDate ? null : { invalidDate: true };
   };
 }

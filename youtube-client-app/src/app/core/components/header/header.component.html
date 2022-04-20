@@ -2,7 +2,9 @@
   <div class="header__top">
     <div class="header__setting-wrapper">
       <div class="header__logo">
-        <mat-icon class="youtube-logo" color="primary">smart_display</mat-icon>
+        <a routerLink="/home">
+          <mat-icon class="youtube-logo" color="primary">smart_display</mat-icon>
+        </a>
       </div>
       <app-search></app-search>
       <button mat-raised-button class="header__setting" color="primary" (click)="settingActive = !settingActive">

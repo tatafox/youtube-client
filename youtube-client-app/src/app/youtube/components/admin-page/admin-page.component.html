@@ -53,19 +53,6 @@
       <mat-error
         *ngIf="adminPageForm.controls['linkVideo'].hasError('required')">The image link is invalid</mat-error>
     </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Date</mat-label>
-      <input
-        type="date"
-        autocomplete="off"
-        matInput
-        formControlName="date"
-      />
-      <mat-error
-        *ngIf="adminPageForm.controls['date'].hasError('required')">Please enter a creation date</mat-error>
-      <mat-error
-        *ngIf="adminPageForm.controls['date'].hasError('invalidDate')">The date is invalid</mat-error>
-    </mat-form-field>
     <div class="button-wrapper">
       <button mat-raised-button type="submit" color="primary" [disabled]="adminPageForm.invalid">
         Create card

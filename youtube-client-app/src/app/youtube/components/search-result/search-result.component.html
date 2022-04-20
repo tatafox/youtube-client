@@ -4,6 +4,9 @@
     <app-search-item
       *ngFor="let item of items | sort: sortSettings" [item]="item"
     ></app-search-item>
+    <app-search-item
+      *ngFor="let item of itemsCustom" [itemCustom]="item"
+    ></app-search-item>
   </div>
 </div>
 </ng-container>

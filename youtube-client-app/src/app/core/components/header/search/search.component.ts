@@ -3,9 +3,9 @@ import {
 } from '@angular/core';
 import { debounceTime, Observable, tap } from 'rxjs';
 import { Router } from '@angular/router';
-import { Store } from "@ngrx/store";
-import { VideoState, OnSearch, setSearchResult } from "../../../../redux";
-import { YoutubeApiService } from "../../../../youtube/services/youtube-api.service";
+import { Store } from '@ngrx/store';
+import { VideoState, setSearchResult } from '../../../../redux';
+import { YoutubeApiService } from '../../../../youtube/services/youtube-api.service';
 
 @Component({
   selector: 'app-search',

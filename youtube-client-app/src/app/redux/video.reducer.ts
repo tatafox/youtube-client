@@ -13,19 +13,11 @@ const initialState: VideoState = {
 
 const reducer = createReducer(
   initialState,
-  on(VideoActions.getVideoById, (state) => {
-    console.log(state);
-    return { ...state };
-  }),
-  on(VideoActions.addCard, (state) => {
-    console.log(state);
-    return { ...state };
-  }),
-  on(VideoActions.deleteCard, (state) => {
-    console.log(state);
-    return { ...state };
-  }),
-  on(VideoActions.setSearchResult, (store, { items }) => ({...store, items })),
+  on(VideoActions.addCard, (state, { newCard }) => ({
+    ...state,
+    customItems: [...state.customItems, newCard]
+  })),
+  on(VideoActions.setSearchResult, (state, { items }) => ({...state, items })),
 );
 
 export function videoReducer(state: VideoState, action: Action): VideoState {

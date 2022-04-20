@@ -18,16 +18,16 @@ export class CustomItem implements ICustomItem {
 
   constructor(
     title: string,
-    desc: string,
-    imageUrl: string,
-    link: string,
+    description: string,
+    img: string,
+    linkVideo: string,
   ) {
     this.snippet = {
-      description: desc,
+      description,
       publishedAt: new Date().toString(),
-      thumbnail: imageUrl,
+      thumbnail: img,
       title,
-      link,
+      link: linkVideo,
     };
     this.id = `${Date.now()}`;
   }

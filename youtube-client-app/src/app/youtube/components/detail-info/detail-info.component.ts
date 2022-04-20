@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { ISearchItem } from '../../../shared/models/search-items.models';
+import { ISearchItem, IStatistics } from '../../../shared/models/search-items.models';
 import { YoutubeApiService } from '../../services/youtube-api.service';
 import { AppState } from '../../../redux';
+import { ICustomItem } from '../../../shared/models/custom-item.models';
 
 @Component({
   selector: 'app-detail-info',
@@ -12,11 +13,15 @@ import { AppState } from '../../../redux';
   styleUrls: ['./detail-info.component.scss'],
 })
 export class DetailInfoComponent implements OnInit {
-  public item!: ISearchItem;
+  public item!: ISearchItem | ICustomItem;
 
   public id!: string;
 
   public isLoading: boolean = true;
+
+  public thumbnail!: string;
+
+  public statistics!: IStatistics;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,23 +36,23 @@ export class DetailInfoComponent implements OnInit {
 
     this.store.select((state) => state)
       .subscribe((state) => {
-        const item = state.videoState.items.find((card) => card.id === this.id);
+        const item = state.videoState.items.find((card) => card.id === this.id)
+          || state.videoState.customItems.find((card) => card.id === this.id);
         if (!item) {
           this.router.navigate(['404']);
         }
-        this.item = item as ISearchItem;
+
+        if ((item as ISearchItem).statistics) {
+          this.item = item as ISearchItem;
+          this.thumbnail = this.item.snippet.thumbnails.maxres?.url
+            || this.item.snippet.thumbnails.high.url;
+          this.statistics = this.item.statistics;
+        } else {
+          this.item = item as ICustomItem;
+          this.thumbnail = this.item.snippet.thumbnail;
+        }
         this.isLoading = false;
       });
-
-    /*
-    this.youtubeApiServices.getVideoInfoById(this.id).subscribe((response) => {
-      this.item = response;
-      if (!this.item) {
-        this.router.navigate(['404']);
-      }
-      this.isLoading = false;
-      return response;
-    }); */
   }
 
   public goBack(): void {
