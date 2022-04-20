@@ -12,6 +12,8 @@ import { SortSettingsService } from '../../../core/services/sort-settings.servic
 export class SearchResultComponent implements OnInit {
   public items!: ISearchItem[];
 
+  public isLoading!: boolean;
+
   public sortSettings: ISortSettings = {
     filterBy: sortMap.empty,
     sortIncrease: true,
@@ -32,6 +34,9 @@ export class SearchResultComponent implements OnInit {
     });
     this.sortSettingsService.sortSettings$.subscribe((sortSettings) => {
       this.sortSettings = sortSettings;
+    });
+    this.videoSearchService.isLoading$.subscribe((isLoad) => {
+      this.isLoading = isLoad;
     });
   }
 }

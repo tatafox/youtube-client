@@ -1,13 +1,10 @@
 <form class="search-form">
   <mat-form-field class="search-form__field" appearance="fill">
     <input
-      [(ngModel)]="searchVal"
-      [ngModelOptions]="{standalone: true}"
       matInput
+      #searchVideoInput
       placeholder="What are you want to find out?"
+      [disabled]="router.url.search('/home') === -1"
       class="search-form__input">
   </mat-form-field>
-  <button mat-raised-button type="submit" color="primary" (click)="onClickSearch()">
-    search
-  </button>
 </form>

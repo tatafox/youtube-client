@@ -1,0 +1,76 @@
+<mat-card class="login-card">
+  <mat-card-title>Create new card</mat-card-title>
+  <form [formGroup]="adminPageForm" (ngSubmit)="submitAdminPageForm()">
+    <mat-form-field appearance="fill">
+      <mat-label>Title</mat-label>
+      <input
+        type="text"
+        autocomplete="off"
+        matInput
+        formControlName="title"
+      />
+      <mat-error
+        *ngIf="adminPageForm.controls['title'].hasError('required')">Please enter a title</mat-error>
+      <mat-error
+        *ngIf="adminPageForm.controls['title'].hasError('maxlength')">The title is too long</mat-error>
+      <mat-error
+      *ngIf="adminPageForm.controls['title'].hasError('minlength')">The title is too short</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <input
+        type="text"
+        autocomplete="off"
+        matInput
+        formControlName="description"
+      />
+      <mat-error
+        *ngIf="adminPageForm.controls['description'].hasError('maxlength')">The description is too long</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Img</mat-label>
+      <input
+        type="url"
+        autocomplete="off"
+        matInput
+        formControlName="img"
+      />
+      <mat-error
+        *ngIf="adminPageForm.controls['img'].hasError('required')">Please enter a link to the image</mat-error>
+      <mat-error
+        *ngIf="adminPageForm.controls['img'].hasError('invalidUrl')">Please enter a link to the image</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Link video</mat-label>
+      <input
+        type="url"
+        autocomplete="off"
+        matInput
+        formControlName="linkVideo"
+      />
+      <mat-error
+        *ngIf="adminPageForm.controls['linkVideo'].hasError('required')">Please enter a link to the video</mat-error>
+      <mat-error
+        *ngIf="adminPageForm.controls['linkVideo'].hasError('required')">The image link is invalid</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Date</mat-label>
+      <input
+        type="date"
+        autocomplete="off"
+        matInput
+        formControlName="date"
+      />
+      <mat-error
+        *ngIf="adminPageForm.controls['date'].hasError('required')">Please enter a creation date</mat-error>
+      <mat-error
+        *ngIf="adminPageForm.controls['date'].hasError('invalidDate')">The date is invalid</mat-error>
+    </mat-form-field>
+    <div class="button-wrapper">
+      <button mat-raised-button type="submit" color="primary" [disabled]="adminPageForm.invalid">
+        Create card
+      </button>
+    </div>
+  </form>
+</mat-card>
+
