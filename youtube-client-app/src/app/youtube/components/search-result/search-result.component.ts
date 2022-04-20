@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ISearchItem } from '../../../shared/models/search-items.models';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { ISearchItem } from "../../../shared/models/search-items.models";
 import { VideoSearchService } from '../../../core/services/video-search.service';
 import { ISortSettings, sortMap } from '../../../shared/models/sort-settings.model';
 import { SortSettingsService } from '../../../core/services/sort-settings.service';
+import { AppState } from "../../../redux";
 
 @Component({
   selector: 'app-search-result',
@@ -11,6 +14,10 @@ import { SortSettingsService } from '../../../core/services/sort-settings.servic
 })
 export class SearchResultComponent implements OnInit {
   public items!: ISearchItem[];
+
+  public state$!: Observable<AppState>;
+
+  public items$!: Observable<ISearchItem[]>;
 
   public isLoading!: boolean;
 
@@ -23,15 +30,15 @@ export class SearchResultComponent implements OnInit {
   constructor(
     private readonly videoSearchService: VideoSearchService,
     private readonly sortSettingsService: SortSettingsService,
+    private store: Store<AppState>,
   ) {}
 
   ngOnInit(): void {
-    if (this.videoSearchService.cardCollection) {
-      this.items = this.videoSearchService.cardCollection;
-    }
-    this.videoSearchService.items$.subscribe((items) => {
-      this.items = items;
+    this.state$ = this.store.select((state) => state);
+    this.state$.subscribe((state) => {
+      this.items = state.videoState.items;
     });
+
     this.sortSettingsService.sortSettings$.subscribe((sortSettings) => {
       this.sortSettings = sortSettings;
     });

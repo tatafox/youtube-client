@@ -10,7 +10,8 @@ export class SortPipe implements PipeTransform {
   constructor() {
   }
 
-  private sortByViews(cards: ISearchItem[], isIncrease: boolean): ISearchItem[] {
+  private sortByViews(cardsCollection: ISearchItem[], isIncrease: boolean): ISearchItem[] {
+    const cards = new Array<ISearchItem>(...cardsCollection);
     if (!isIncrease) {
       return cards.sort(
         (prev, next) => +next.statistics.viewCount - +prev.statistics.viewCount,
@@ -21,7 +22,8 @@ export class SortPipe implements PipeTransform {
     );
   }
 
-  private sortByDate(cards: ISearchItem[], isIncrease: boolean): ISearchItem[] {
+  private sortByDate(cardsCollection: ISearchItem[], isIncrease: boolean): ISearchItem[] {
+    const cards = new Array<ISearchItem>(...cardsCollection);
     if (!isIncrease) {
       return cards.sort(
         (prev, next) => new Date(next.snippet.publishedAt).getTime()
@@ -34,7 +36,8 @@ export class SortPipe implements PipeTransform {
     );
   }
 
-  private filterByKeyword(cards: ISearchItem[], keyword: string): ISearchItem[] {
+  private filterByKeyword(cardsCollection: ISearchItem[], keyword: string): ISearchItem[] {
+    const cards = new Array<ISearchItem>(...cardsCollection);
     if (cards && keyword.trim()) {
       return cards.filter((card) => {
         const onCheck: string[] = [

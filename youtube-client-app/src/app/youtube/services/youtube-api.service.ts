@@ -40,6 +40,16 @@ export class YoutubeApiService {
       .pipe(map((responce: any) => responce.items[0]));
   }
 
+  public getVideosByQuery(query: string) {
+    console.log(query)
+    return this.getSearchListByQuery(query)
+      .pipe(
+        map((data: any) =>
+            this.getVideoInfoById(data.id.videoId)
+        ),
+      )
+  }
+
   public fetchVideosByQuery(query: string) {
     return this.getSearchListByQuery(query)
       .subscribe((response) => {
