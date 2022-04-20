@@ -1,3 +1,4 @@
+<ng-container *ngIf="!isLoading; else loading">
 <button class="button-back" mat-flat-button color="primary" (click)="goBack()">
   <mat-icon>chevron_left</mat-icon>
 </button>
@@ -5,7 +6,7 @@
   <div class="card__image-wrapper">
     <img
       class="card__image"
-      [src]="item.snippet.thumbnails.maxres.url"
+      [src]="thumbnail"
       [alt]="item.snippet.title"
     />
   </div>
@@ -18,9 +19,12 @@
       <div><strong>Description:</strong></div>
       <div>{{item.snippet.description}}</div>
     </div>
-    <app-statistic [statistic]="item.statistics"></app-statistic>
+    <app-statistic *ngIf="statistics" [statistic]="statistics"></app-statistic>
     <mat-card-footer>
       <mat-progress-bar color="accent" mode="determinate" value="100"></mat-progress-bar>
     </mat-card-footer>
   </mat-card-content>
 </mat-card>
+</ng-container>
+<ng-template #loading><app-loading></app-loading></ng-template>
+

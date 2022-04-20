@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { IUser } from '../../shared/models/user.models';
 
@@ -7,9 +7,9 @@ import { IUser } from '../../shared/models/user.models';
   providedIn: 'root',
 })
 export class UserService {
-  public user$ = new Subject<IUser | null>();
-
   private user!: IUser | null;
+
+  private userStream$ = new BehaviorSubject<IUser | null>(null);
 
   constructor(private router: Router) {
     this.tryLogin();
@@ -23,6 +23,7 @@ export class UserService {
     }
 
     this.user = user;
+    this.userStream$.next(this.user);
     return !!this.user;
   }
 
@@ -47,7 +48,7 @@ export class UserService {
     }
 
     this.user = user;
-    this.user$.next(user);
+    this.userStream$.next(user);
     this.saveUserToLocalStorage();
     this.router.navigate(['home']);
 
@@ -56,11 +57,15 @@ export class UserService {
 
   public logOut(): void {
     window.localStorage.clear();
-    this.user$.next(null);
+    this.userStream$.next(null);
     this.user = null;
   }
 
   public isLogin(): boolean {
     return !!this.user;
+  }
+
+  public getUserStream(): Observable<IUser | null> {
+    return this.userStream$;
   }
 }

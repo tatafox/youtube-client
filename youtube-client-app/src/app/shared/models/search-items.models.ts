@@ -1,9 +1,21 @@
+export interface ISearchResultItem {
+  kind: 'youtube#searchResult';
+  etag: string;
+  id: IIdInfo;
+  snippet: ISnipet;
+}
+
 export interface ISearchItem {
-  kind: string;
+  kind: 'youtube#video';
   etag: string;
   id: string;
   snippet: ISnipet;
   statistics: IStatistics;
+}
+
+export interface IIdInfo {
+  kind: 'youtube#video';
+  videoId: string;
 }
 
 export interface IStatistics {

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { SearchComponent } from './components/header/search/search.component';
 import { LoginComponent } from './components/header/login/login.component';
@@ -24,6 +25,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     MaterialModule,
     SharedModule,
     FormsModule,
+    RouterModule,
   ],
   exports: [
     HeaderComponent,
